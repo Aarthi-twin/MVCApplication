@@ -1,0 +1,45 @@
+﻿@model MVCApplication.Models.Movie
+@{
+    ViewBag.Title = "EditMovie";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Edit Movie</h2>
+<div class="Container">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        var DateAdded = Model.DateAdded.HasValue ? Model.DateAdded.Value.ToShortDateString() : "No Date";
+        var ReleaseDate = Model.ReleaseDate.HasValue ? Model.ReleaseDate.Value.ToShortDateString() : "No Date";
+        <div class="form-group">
+            @Html.LabelFor(m => m.MovieName)
+            @Html.TextBoxFor(m => m.MovieName, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.MovieName)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.DateAdded)
+            @Html.TextBoxFor(m => m.DateAdded, new { @class = "form-control"})
+            @Html.ValidationMessageFor(m => m.DateAdded)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.ReleaseDate)
+            @Html.TextBoxFor(m => m.ReleaseDate, new { @class = "form-control"})
+            @Html.ValidationMessageFor(m => m.ReleaseDate)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.AvailableStock)
+            @Html.TextBoxFor(m => m.AvailableStock, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.AvailableStock)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Genre)
+            @Html.DropDownListFor(m => m.GenreId, ViewBag.GenreId as SelectList, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.GenreId)
+        </div>
+        <div>
+            <input type="submit" name="cmdsubmit" class="btn-btn-outline" />
+        </div>
+        @Html.ActionLink("Back to List", "Index", "Movies", null, null);
+    }
+</div>
+

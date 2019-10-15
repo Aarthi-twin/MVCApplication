@@ -1,0 +1,21 @@
+﻿@model MVCApplication.Models.Movie
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Movie Detail</h2>
+@if(Model!=null)
+{
+    <h2>@Model.MovieName</h2>
+    <ul>
+        <li>@Model.ReleaseDate</li>
+        <li>@Model.Genre.Name</li>
+    </ul>
+}
+else
+{
+    <text> No Records Exists</text>
+}
+@Html.ActionLink("Back To List","Index","Movies",null,null)
+

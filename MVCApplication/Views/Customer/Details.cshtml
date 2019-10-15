@@ -1,0 +1,24 @@
+﻿@model MVCApplication.Models.Customer
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Customer Details</h2>
+@if (Model != null)
+{
+    <h2>@Model.CustomerName</h2>
+    <ul>
+        <li>@Model.BirthDate.Value.ToLongDateString()</li>
+        <li>@Model.Gender</li>
+        <li>@Model.City</li>
+        <li>@Model.MembershipType.Duration</li>
+        <li>@Model.MembershipType.SignUpFree</li>
+        <li>@Model.MembershipType.Discount</li>
+    </ul>
+}
+else
+{
+    <text>No record Exists</text>
+}
+@Html.ActionLink("Back To List", "Index", "Customer", null, null)

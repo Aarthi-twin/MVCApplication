@@ -1,0 +1,28 @@
+﻿@model List<MVCApplication.Models.Customer>
+@{
+    ViewBag.Title = "IndexCustomer";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>Customer Details</h2>
+<table class="table table-bordered table-hover">
+    <tr>
+        <th>Customer Id</th>
+        <th>Name</th>
+        <th>Membership Type</th>
+        <th>Edit/Delete Customer</th>
+    </tr>
+    @foreach (var customer in Model)
+    {
+    <tr>
+        <td>@customer.id</td>
+        <td>@Html.ActionLink(customer.CustomerName, "Details", "Customer", new { id = customer.id }, null)</td>
+        <td>@customer.MembershipType.Type</td>
+        <td>@Html.ActionLink("Edit", "EditCustomer", "Customer", new { id = customer.id }, new { @class = "btn btn-secondary" })|
+        @Html.ActionLink("Delete", "DeleteCustomer", "Customer", new { id = customer.id }, new { @class = "btn btn-secondary" })
+        </td>
+    </tr>
+    }
+    @Html.ActionLink("New Customer","Create","Customer")
+    
+</table>
+

@@ -1,0 +1,16 @@
+﻿@model MVCApplication.ViewModel.CustomerMovieViewModel
+@{
+    ViewBag.Title = "DisplayMovie";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<p>
+    <h3><text>Movie Name:</text>@Model.Movie.MovieName</h3>
+</p>
+<ul>
+    @foreach (var cus in Model.Customer)
+    {
+        <li>@cus.CustomerName</li>
+    }
+    </ul>
